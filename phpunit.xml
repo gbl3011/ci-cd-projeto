@@ -1,9 +1,10 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          cacheDirectory=".phpunit.cache">
+    
     <testsuites>
-        <testsuite name="default">
+        <testsuite name="unit">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
@@ -12,9 +13,13 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <directory>vendor</directory>
+            <directory>tests</directory>
+        </exclude>
         <report>
-            <text outputFile="coverage.txt"/>
-            <html outputDirectory="coverage-report"/>
+            <text outputFile="php://stdout" showUncoveredFiles="true"/>
+            <html outputDirectory="coverage"/>
         </report>
     </coverage>
 </phpunit>
