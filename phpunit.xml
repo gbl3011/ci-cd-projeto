@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
@@ -10,7 +9,8 @@
          displayDetailsOnPhpunitDeprecations="true"
          failOnPhpunitDeprecation="true"
          failOnRisky="true"
-         failOnWarning="true">
+         failOnWarning="true"
+         failOnSkipped="true"> <!-- Adicionando failOnSkipped -->
     <testsuites>
         <testsuite name="default">
             <directory>tests</directory>
@@ -22,4 +22,15 @@
             <directory>src</directory>
         </include>
     </source>
+
+    <!-- Cobertura de código -->
+    <coverage>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <report>
+            <text outputFile="coverage.txt"/>
+            <html outputDirectory="coverage-report"/>
+        </report>
+    </coverage>
 </phpunit>
