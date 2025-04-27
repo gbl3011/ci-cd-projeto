@@ -19,7 +19,7 @@ jobs:
       - name: Send Discord Alert
         uses: Sniddl/discord-commits@v1.6
         with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook: ${{ secrets.DISCORD_WEBWOOK }}
           message: |
             **Novo Commit ou Merge no Branch Master!**
             - Repositório: ${{ github.repository }}
