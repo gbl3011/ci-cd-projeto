@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Send Discord Alert
-        uses: Ilshidur/action-discord@v1
+        uses: Ilshidur/action-discord@v2
         with:
           webhook_url: "https://discord.com/api/webhooks/1366106729951268894/I0J6GUTAsu1DW_w-2F1gqKg0Vm9PbBE2b7NmH7LVtKiUJ0bLIMJ8uAOYpwaYzMsFW0EJ"
           username: 'GitHub Actions'
