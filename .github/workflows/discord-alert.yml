@@ -19,7 +19,7 @@ jobs:
       - name: Send Discord Alert
         uses: Ilshidur/action-discord@v2
         with:
-          webhook_url: "https://discord.com/api/webhooks/1366106729951268894/I0J6GUTAsu1DW_w-2F1gqKg0Vm9PbBE2b7NmH7LVtKiUJ0bLIMJ8uAOYpwaYzMsFW0EJ"
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           username: 'GitHub Actions'
           content: |
             **Novo Commit ou Merge no Branch Master!**
