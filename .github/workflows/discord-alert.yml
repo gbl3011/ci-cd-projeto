@@ -1,0 +1,29 @@
+name: Discord Alerts
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Send Discord Alert
+        uses: Ilshidur/action-discord@v1
+        with:
+          webhook_url: "https://discord.com/api/webhooks/1366106729951268894/I0J6GUTAsu1DW_w-2F1gqKg0Vm9PbBE2b7NmH7LVtKiUJ0bLIMJ8uAOYpwaYzMsFW0EJ"
+          username: 'GitHub Actions'
+          content: |
+            **Novo Commit ou Merge no Branch Master!**
+            - Repositório: ${{ github.repository }}
+            - Autor: ${{ github.actor }}
+            - Commit: ${{ github.sha }}
+            - Mensagem: ${{ github.event.head_commit.message }}
