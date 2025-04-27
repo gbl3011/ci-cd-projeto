@@ -42,6 +42,11 @@ jobs:
           curl -sS https://getcomposer.org/installer | php
           php composer.phar install
 
-      # Rodar os testes unitários
+                # Rodar os testes unitários
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --testdox
+        run: |
+          chmod +x vendor/bin/phpunit  # Torna o script phpunit executável
+          vendor/bin/phpunit --testdox
+
+
+     
