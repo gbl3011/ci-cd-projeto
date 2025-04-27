@@ -20,6 +20,7 @@ jobs:
         uses: Sniddl/discord-commits@v1.6
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
           username: 'GitHub Actions'
           content: |
             **Novo Commit ou Merge no Branch Master!**
