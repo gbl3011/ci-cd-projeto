@@ -1,4 +1,4 @@
-name: Discord Alerts
+name: Discord Alerts and Run PHPUnit Tests
 
 on:
   push:
@@ -9,13 +9,15 @@ on:
       - master
 
 jobs:
-  notify:
+  notify_and_test:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout do código
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Enviar Notificação para o Discord
       - name: Send Discord Alert
         uses: Sniddl/discord-commits@v1.6
         with:
@@ -26,3 +28,20 @@ jobs:
             - Autor: ${{ github.actor }}
             - Commit: ${{ github.sha }}
             - Mensagem: ${{ github.event.head_commit.message }}
+
+      # Configurar PHP
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'  # Altere conforme a versão do PHP que você está utilizando
+          extensions: mbstring, xml, curl, bcmath  # Lista as extensões que seu projeto usa
+
+      # Instalar dependências do Composer
+      - name: Install Composer dependencies
+        run: |
+          curl -sS https://getcomposer.org/installer | php
+          php composer.phar install
+
+      # Rodar os testes unitários
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --testdox
