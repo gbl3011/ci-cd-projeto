@@ -33,7 +33,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'  # Altere conforme a versão do PHP que você está utilizando
+          php-version: '8.3'  # Altere conforme a versão do PHP que você está utilizando
           extensions: mbstring, xml, curl, bcmath  # Lista as extensões que seu projeto usa
 
       # Instalar dependências do Composer
